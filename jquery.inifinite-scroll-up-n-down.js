@@ -1,11 +1,8 @@
-
-/*========================================
- * infinite-scroll-up-n-down
- *========================================
-This plugin makes you enable to infinite scroll up and down.
-
---------------------*/
-
+/*
+ * Infinite Scroll Up 'N Down
+ * MIT LICENSE
+ * Rikson (http://rikson.net)
+ */
 (function($){
 	$.fn.infiniteScrollUND = function(option){
 		var defaultOption = {
@@ -13,18 +10,34 @@ This plugin makes you enable to infinite scroll up and down.
 			upNav: '',
 			threshold: $(window).height(),
 			prefill: true,
-			container: $(this).selector,
+			container: this.selector,
 			headline: null,
 			timeout: 1000,
-			history: true,
+			max_request: 3,
 			top: 0,
 			append: function(children){},
 			prepend: function(children){}
 		};
 		var option = $.extend(defaultOption, option);
 
-		if (option.downNav === '') console.error('downNav(option) is required');
-		if (option.upNav === '') console.error('upNav(option) is required');
+		// TODO: I don't know
+		// why this jQuery object doesn't have selector attribute.
+		// console.log(this);
+
+		if (this.length === 0) {
+			console.error('jQuery Object is not found');
+			return false;
+		}
+
+		if (option.downNav === '') {
+			console.error('downNav(option) is required');
+			return false;
+		}
+
+		if (option.upNav === '') {
+			console.error('upNav(option) is required');
+			return false;
+		}
 
 		var pageBorders = [];
 		var $downNav = $(option.downNav);
@@ -65,6 +78,8 @@ This plugin makes you enable to infinite scroll up and down.
 					type: 'GET',
 					timeout: option.timeout,
 					success: function(data){
+						// jQuery can not find first layer at this case.
+						// Container should be deeper than second layer.
 						$contents = $(data).find(option.container).children();
 						var beforeContainerHeight = $(option.container).height();
 						$(option.container).prepend($contents);
@@ -122,9 +137,11 @@ This plugin makes you enable to infinite scroll up and down.
 		}
 
 		function fillTheTop(){
+			var req_count = 0;
 			var prependTimerId = setInterval(function(){
-				if ($upNav.length > 0 && distance('top') <= option.threshold) {
+				if ($upNav.length > 0 && distance('top') <= option.threshold && req_count < option.max_request) {
 					prependContents();
+					req_count++;
 				} else {
 					clearInterval(prependTimerId);
 				}
@@ -132,8 +149,9 @@ This plugin makes you enable to infinite scroll up and down.
 		}
 
 		function fillTheBtm(){
+			var req_count = 0;
 			var appendTimerId = setInterval(function(){
-				if ($downNav.length > 0 && distance('bottom') <= option.threshold) {
+				if ($downNav.length > 0 && distance('bottom') <= option.threshold && req_count < option.max_request) {
 					appendContents();
 				} else {
 					clearInterval(appendTimerId);
@@ -160,22 +178,6 @@ This plugin makes you enable to infinite scroll up and down.
 			}
 			if (prevPosFromBtm > option.threshold && nextPosFromBtm <= option.threshold) {
 				fillTheBtm();
-			}
-
-			if (option.history) {
-				for (var i = 0; i < pageBorders.length; i++) {
-					var pageBorder = pageBorders[i];
-					// Scrolling Down
-					if (pageBorder.offsetTop - option.top > prevPosFromTop && pageBorder.offsetTop - option.top <= nextPosFromTop) {
-						history.pushState(null, $(option.headline).text(), pageBorder.below);
-						break;
-					}
-					// Scrolling Up
-					if (pageBorder.offsetTop - option.top < prevPosFromTop && pageBorder.offsetTop - option.top >= nextPosFromTop) {
-						history.pushState(null, $(option.headline).text(), pageBorder.above);
-						break;
-					}
-				}
 			}
 
 			prevPosFromTop = nextPosFromTop;

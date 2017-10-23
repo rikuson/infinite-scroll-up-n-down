@@ -1,0 +1,51 @@
+th {
+	text-align: center;
+}
+
+.navbar-brand * {
+	font-size: 1em;
+	padding: 0;
+	margin: 0;
+}
+
+.navbar + * {
+	padding-top: 80px;
+}
+
+.label-group .label {
+	border-radius: 0;
+}
+
+.label-group .label:first-child {
+	border-radius: .25em 0 0 .25em;
+}
+
+.label-group .label:last-child {
+	border-radius: 0 .25em .25em 0;
+}
+
+.label-pre {
+	border-radius: .25em .25em 0 0;
+}
+
+.label-pre + pre {
+	border-radius: 0 4px 4px 4px;
+}
+
+.icon {
+	margin: -2px;
+	height: 1em;
+	vertical-align: baseline;
+}
+
+.page-header:first-child {
+	margin-top: 0;
+}
+
+.page-header:first-child h2 {
+	margin-top: 0;
+}
+
+.list-group-child {
+	text-indent: 2em;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>Infinite Scroll Up 'N Down</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class="jumbotron">
+			<div class="container text-center">
+				<span class="label label-default">GitHub Star</span>
+				<span class="label-group">
+					<span class="label label-success">npm</span><span class="label label-default">&gt;= 2.0</span>
+				</span>
+				<span class="label-group">
+					<span class="label label-success">LISCENCE</span><span class="label label-default">MIT</span>
+				</span>
+				<h1>Infinite Scroll Up 'N Down</h1>
+				<p class="lead">This is jQuery plugin that makes your website infinite scroll up and down.</p>
+				<a class="btn btn-warning btn-lg" href="./page-1.html">Demo</a>
+				<a class="btn btn-default btn-lg" href="https://github.com/rikuson/infinite-scroll-up-n-down">
+					<img class="icon" src="https://assets-cdn.github.com/favicon.ico" alt="GitHub">
+					Repository
+				</a>
+			</div>
+		</div>
+		<div class="container">
+			<div class="page-header">
+				<h2>Installation</h2>
+			</div>
+			<h3>Basic</h3>
+			<p>Run the command below.</p>
+			<pre>$ git clone https://github.com/rikuson/infinite-scroll-up-n-down</pre>
+			<p>Load it into your HTML file with jQuery.</p>
+			<span class="label label-default label-pre">example.html</span>
+			<pre>...
+&lt;script type="text/javascript" src="./jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./infinite-scroll-up-n-down.min.js"&gt;&lt;/script&gt;
+...</pre>
+			<h3>NPM</h3>
+			<p>If you are using npm, run the command below.</p>
+			<pre>$ npm install --save infinite-scroll-up-n-down</pre>
+
+			<div class="page-header">
+				<h2>Usage</h2>
+			</div>
+			<p>Let's say you have HTML file below.</p>
+			<span class="label label-default label-pre">page-2.html</span>
+			<pre>...
+&lt;script type="text/javascript" src="./example.js"&gt;&lt;/script&gt;
+...
+&lt;div id="contents"&gt;
+  &lt;!-- Load contents here --&gt;
+&lt;/div&gt;
+...
+&lt;a class="nav-prev" href="./page-1.html"&gt;Prev&lt;/a&gt;
+&lt;a class="nav-next" href="./page-3.html"&gt;Next&lt;/a&gt;
+...</pre>
+			<p>Also, you have JavaScript file below.</p>
+			<span class="label label-default label-pre">example.js</span>
+			<pre>$('#contents').infiniteScrollUnD({
+  downNav: '.nav-next',
+  upNav: '.nav-prev'
+});</pre>
+			<p>Then it works!!</p>
+			<div class="page-header">
+				<h2>Options</h2>
+			</div>
+			<table class="table table-bordered table-striped">
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Default</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td><strong>downNav (Required)</strong></td>
+					<td>String</td>
+					<td>null</td>
+					<td>jQuery selector.</td>
+				</tr>
+				<tr>
+					<td><strong>upNav (Required)</strong></td>
+					<td>String</td>
+					<td>null</td>
+					<td>jQuery selector.</td>
+				</tr>
+				<tr>
+					<td>threshold</td>
+					<td>Number</td>
+					<td>$(window).height()</td>
+					<td>Timing it starts loading next contents. The unit is pixel.</td>
+				</tr>
+				<tr>
+					<td>prefill</td>
+					<td>Bool</td>
+					<td>true</td>
+					<td>If you load next contents when you open the page.</td>
+				</tr>
+				<tr>
+					<td>container</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>headline</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>timeout</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>top</td>
+					<td>Number</td>
+					<td>0</td>
+					<td>If you use fixed header, set this the header's height.</td>
+				</tr>
+				<tr>
+					<td>append</td>
+					<td>Function</td>
+					<td>null</td>
+					<td>Callback function after append contents.</td>
+				</tr>
+				<tr>
+					<td>prepend</td>
+					<td>Function</td>
+					<td>null</td>
+					<td>Callback function after append contents.</td>
+				</tr>
+			</table>
+			<h3>downNav / upNav</h3>
+			<h3>threshold</h3>
+
+			<div class="page-header">
+				<h2>Author (Rikson)</h2>
+			</div>
+			<p>Follow me!</p>
+			<h3>日本語</h3>
+			<p>ランサーズ、クラウドワークスで仕事を受注しています。<br>お気軽にご依頼ください。</p>
+			<h3>English</h3>
+		</div>
+		<script type="text/javascript" src="./bundle.js"></script>
+	</body>
+</html>

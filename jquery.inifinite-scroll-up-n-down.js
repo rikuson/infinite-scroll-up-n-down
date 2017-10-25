@@ -11,9 +11,8 @@
 			threshold: $(window).height(),
 			prefill: true,
 			container: this.selector,
-			headline: null,
 			timeout: 1000,
-			max_request: 3,
+			maxRequest: 3,
 			top: 0,
 			append: function(children){},
 			prepend: function(children){}
@@ -139,7 +138,7 @@
 		function fillTheTop(){
 			var req_count = 0;
 			var prependTimerId = setInterval(function(){
-				if ($upNav.length > 0 && distance('top') <= option.threshold && req_count < option.max_request) {
+				if ($upNav.length > 0 && distance('top') <= option.threshold && req_count < option.maxRequest) {
 					prependContents();
 					req_count++;
 				} else {
@@ -151,7 +150,7 @@
 		function fillTheBtm(){
 			var req_count = 0;
 			var appendTimerId = setInterval(function(){
-				if ($downNav.length > 0 && distance('bottom') <= option.threshold && req_count < option.max_request) {
+				if ($downNav.length > 0 && distance('bottom') <= option.threshold && req_count < option.maxRequest) {
 					appendContents();
 				} else {
 					clearInterval(appendTimerId);

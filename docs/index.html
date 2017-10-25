@@ -17,8 +17,8 @@
 				</span>
 				<h1>Infinite Scroll Up 'N Down</h1>
 				<p class="lead">This is jQuery plugin that makes your website infinite scroll up and down.</p>
-				<a class="btn btn-warning btn-lg" href="./page-1.html">Demo</a>
-				<a class="btn btn-default btn-lg" href="https://github.com/rikuson/infinite-scroll-up-n-down">
+				<a class="btn btn-primary btn-lg" href="./page-1.html">Demo</a>
+				<a class="btn btn-link btn-lg" href="https://github.com/rikuson/infinite-scroll-up-n-down">
 					<img class="icon" src="https://assets-cdn.github.com/favicon.ico" alt="GitHub">
 					Repository
 				</a>
@@ -44,106 +44,153 @@
 			<div class="page-header">
 				<h2>Usage</h2>
 			</div>
-			<p>Let's say you have HTML file below.</p>
+			<pre>/
+├ page-1.html
+├ page-2.html *
+├ page-3.html
+└ ...</pre>
 			<span class="label label-default label-pre">page-2.html</span>
 			<pre>...
+&lt;script type="text/javascript" src="./jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./infinite-scroll-up-n-down.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="./example.js"&gt;&lt;/script&gt;
 ...
-&lt;div id="contents"&gt;
-  &lt;!-- Load contents here --&gt;
-&lt;/div&gt;
-...
-&lt;a class="nav-prev" href="./page-1.html"&gt;Prev&lt;/a&gt;
-&lt;a class="nav-next" href="./page-3.html"&gt;Next&lt;/a&gt;
+&lt;body&gt;
+  ...
+  &lt;div&gt;
+    &lt;div id="contents"&gt;
+      &lt;!-- Loads contents here from page 1 --&gt;
+      &lt;h2&gt;Page2&lt;/h2&gt;
+      ...
+      &lt;!-- Loads contents here from page 3 --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+  &lt;a class="nav-prev" href="./page-1.html"&gt;Prev&lt;/a&gt;
+  &lt;a class="nav-next" href="./page-3.html"&gt;Next&lt;/a&gt;
+  ...
+&lt;/body&gt;
 ...</pre>
-			<p>Also, you have JavaScript file below.</p>
+			<p><strong class="text-danger">Because of bug, you can not put #contents in the first layer so far. You need to wrap it by a tag. <a href="https://github.com/rikuson/infinite-scroll-up-n-down/issues/2">Issue#2.</a></strong></p>
 			<span class="label label-default label-pre">example.js</span>
 			<pre>$('#contents').infiniteScrollUnD({
   downNav: '.nav-next',
   upNav: '.nav-prev'
 });</pre>
-			<p>Then it works!!</p>
 			<div class="page-header">
 				<h2>Options</h2>
 			</div>
-			<table class="table table-bordered table-striped">
-				<tr>
-					<th>Name</th>
-					<th>Type</th>
-					<th>Default</th>
-					<th>Description</th>
-				</tr>
-				<tr>
-					<td><strong>downNav (Required)</strong></td>
-					<td>String</td>
-					<td>null</td>
-					<td>jQuery selector.</td>
-				</tr>
-				<tr>
-					<td><strong>upNav (Required)</strong></td>
-					<td>String</td>
-					<td>null</td>
-					<td>jQuery selector.</td>
-				</tr>
-				<tr>
-					<td>threshold</td>
-					<td>Number</td>
-					<td>$(window).height()</td>
-					<td>Timing it starts loading next contents. The unit is pixel.</td>
-				</tr>
-				<tr>
-					<td>prefill</td>
-					<td>Bool</td>
-					<td>true</td>
-					<td>If you load next contents when you open the page.</td>
-				</tr>
-				<tr>
-					<td>container</td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>headline</td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>timeout</td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>top</td>
-					<td>Number</td>
-					<td>0</td>
-					<td>If you use fixed header, set this the header's height.</td>
-				</tr>
-				<tr>
-					<td>append</td>
-					<td>Function</td>
-					<td>null</td>
-					<td>Callback function after append contents.</td>
-				</tr>
-				<tr>
-					<td>prepend</td>
-					<td>Function</td>
-					<td>null</td>
-					<td>Callback function after append contents.</td>
-				</tr>
-			</table>
-			<h3>downNav / upNav</h3>
-			<h3>threshold</h3>
-
-			<div class="page-header">
-				<h2>Author (Rikson)</h2>
+			<div class="table-wrapper">
+				<table class="table table-bordered table-striped">
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Default</th>
+						<th>Description</th>
+					</tr>
+					<tr>
+						<td><strong>downNav (Required)</strong></td>
+						<td>String</td>
+						<td>null</td>
+						<td>jQuery selector.</td>
+					</tr>
+					<tr>
+						<td><strong>upNav (Required)</strong></td>
+						<td>String</td>
+						<td>null</td>
+						<td>jQuery selector.</td>
+					</tr>
+					<tr>
+						<td>threshold</td>
+						<td>Number</td>
+						<td>$(window).height()</td>
+						<td>Timing it starts loading next contents. The unit is pixel.</td>
+					</tr>
+					<tr>
+						<td>prefill</td>
+						<td>Bool</td>
+						<td>true</td>
+						<td>If you load next contents when you open the page.</td>
+					</tr>
+					<tr>
+						<td>container</td>
+						<td>String</td>
+						<td>this.selector</td>
+						<td>jQuery selector. Where to load contents.<br><strong class="text-danger">Sometimes, the default value doesn't work. You need to specify in that case. <a href="https://github.com/rikuson/infinite-scroll-up-n-down/issues/1">Issue#1.</a></strong></td>
+					</tr>
+					<tr>
+						<td>timeout</td>
+						<td>Number</td>
+						<td>1000</td>
+						<td>How long it try to load page.</td>
+					</tr>
+					<tr>
+						<td>maxRequest</td>
+						<td>Number</td>
+						<td>3</td>
+						<td>How many times it try to load page.</td>
+					</tr>
+					<tr>
+						<td>top</td>
+						<td>Number</td>
+						<td>0</td>
+						<td>If you use fixed header, set this the header's height.</td>
+					</tr>
+					<tr>
+						<td>append</td>
+						<td>Function</td>
+						<td>null</td>
+						<td>Callback function after append contents.</td>
+					</tr>
+					<tr>
+						<td>prepend</td>
+						<td>Function</td>
+						<td>null</td>
+						<td>Callback function after append contents.</td>
+					</tr>
+				</table>
 			</div>
-			<p>Follow me!</p>
+			<div class="page-header">
+				<h2>Follow me</h2>
+			</div>
 			<h3>日本語</h3>
-			<p>ランサーズ、クラウドワークスで仕事を受注しています。<br>お気軽にご依頼ください。</p>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">SNS</h4>
+				</div>
+				<div class="panel-body">
+					<ul class="list-inline">
+						<li><a class="btn btn-lg btn-twitter" href="https://twitter.com/rikson_ja?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"><img class="icon icon-circle" src="https://abs.twimg.com/favicons/favicon.ico" alt="Twitter"> ツイッター</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+						<li><a class="btn btn-lg btn-facebook" href="https://www.facebook.com/とにかく細かいひと-403985879976750/"><img class="icon icon-circle" src="https://www.facebook.com/rsrc.php/yl/r/H3nktOa7ZMg.ico" alt="Facebook"> フェイスブック</a></li>
+						<li><a class="btn btn-lg btn-default" href="http://rikson.net"><img class="icon" src="https://pbs.twimg.com/profile_images/833219116420915201/MYTLYQNv_normal.jpg" alt="Blog"> ブログ</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">クラウドソーシング</h4>
+				</div>
+				<div class="panel-body">
+					<p>お気軽にご依頼ください。</p>
+					<ul class="list-inline">
+						<li><a class="btn btn-lg btn-lancers" href="http://www.lancers.jp/affiliate/track?id=1391485&link=%2Fprofile%2FRikson%3F1508947720%26" target="_blank" rel="nofollow"><img class="icon icon-circle" src="https://www.lancers.co.jp/img/favicon.ico?v=1.1" alt="lancers"> ランサーズ</a></li>
+						<li><a class="btn btn-lg btn-crowdworks" href="https://crowdworks.jp/public/employees/1507546"><img class="icon" src="https://cw-assets.crowdworks.jp/assets/cw_theme-rails/favicon-253d48d252e4b3153f5758f8d9480a90.ico" alt="lancers"> クラウドワークス</a></li>
+					</ul>
+				</div>
+			</div>
 			<h3>English</h3>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">SNS</h4>
+				</div>
+				<div class="panel-body">
+					<ul class="list-inline">
+						<li><a class="btn btn-lg btn-twitter" href="https://twitter.com/rikson_en?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"><img class="icon icon-circle" src="https://abs.twimg.com/favicons/favicon.ico" alt="Twitter"> Twitter</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+						<li><a class="btn btn-lg btn-facebook" href="https://www.facebook.com/A-Nitpicking-Man-418607895156903/"><img class="icon icon-circle" src="https://www.facebook.com/rsrc.php/yl/r/H3nktOa7ZMg.ico" alt="Facebook"> Facebook</a></li>
+						<li><a class="btn btn-lg btn-default" href="http://rikson.net/en/"><img class="icon" src="https://pbs.twimg.com/profile_images/833219116420915201/MYTLYQNv_normal.jpg" alt="Blog"> Blog</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 		<script type="text/javascript" src="./bundle.js"></script>
 	</body>

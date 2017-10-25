@@ -1,5 +1,12 @@
+/* native */
 th {
 	text-align: center;
+}
+
+/* bootstrap */
+.table {
+	margin-bottom: 0;
+	white-space: nowrap;
 }
 
 .navbar-brand * {
@@ -32,12 +39,6 @@ th {
 	border-radius: 0 4px 4px 4px;
 }
 
-.icon {
-	margin: -2px;
-	height: 1em;
-	vertical-align: baseline;
-}
-
 .page-header:first-child {
 	margin-top: 0;
 }
@@ -46,6 +47,53 @@ th {
 	margin-top: 0;
 }
 
+/* app */
+.icon {
+	margin: -2px;
+	height: 1em;
+	vertical-align: baseline;
+	display: inline;
+}
+
+.icon-circle {
+	background: #FFF;
+	border-radius: 50%;
+	padding: .1em;
+}
+
 .list-group-child {
 	text-indent: 2em;
 }
+
+.table-wrapper {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.btn-twitter {
+	background: #55ACEE;
+	color: #FFF;
+}
+
+.btn-facebook {
+	background: #3B5998;
+	color: #FFF;
+}
+
+.btn-crowdworks {
+	background: #0073C0;
+	color: #FFF;
+}
+
+.btn-lancers {
+	background: #256BB3;
+	color: #FFF;
+}
+
+/* app-sm */
+@media screen and (max-width: 991px){
+	.table-wrapper {
+		overflow-x: scroll;
+	}
+}
+

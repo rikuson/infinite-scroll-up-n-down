@@ -17,7 +17,6 @@
 				</span>
 				<h1>Infinite Scroll Up 'N Down</h1>
 				<p class="lead">This is jQuery plugin that makes your website infinite scroll up and down.</p>
-				<a class="btn btn-primary btn-lg" href="./page-1.html">Demo</a>
 				<a class="btn btn-link btn-lg" href="https://github.com/rikuson/infinite-scroll-up-n-down">
 					<img class="icon" src="https://assets-cdn.github.com/favicon.ico" alt="GitHub">
 					Repository
@@ -25,6 +24,21 @@
 			</div>
 		</div>
 		<div class="container">
+			<div class="page-header">
+				<h2>Demo</h2>
+			</div>
+			<h3><span class="glyphicon glyphicon-sort"></span> Try scroll up and down!</h3>
+			<div class="row">
+				<div class="col-sm-6">
+					<iframe id="frame" height="300" src="./page-1.html"></iframe>
+				</div>
+				<div class="col-sm-6">
+					<p>I connected page 5 to page 1 and made it repeat to be clear.<br>Off course, you can make it stop scrolling at page 5.</p>
+					<a target="_blank" class="btn btn-primary btn-lg" href="./page-1.html">
+						<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Open in new tab
+					</a>
+				</div>
+			</div>
 			<div class="page-header">
 				<h2>Installation</h2>
 			</div>
@@ -129,12 +143,6 @@
 						<td>Number</td>
 						<td>3</td>
 						<td>How many times it try to load page.</td>
-					</tr>
-					<tr>
-						<td>top</td>
-						<td>Number</td>
-						<td>0</td>
-						<td>If you use fixed header, set this the header's height.</td>
 					</tr>
 					<tr>
 						<td>append</td>

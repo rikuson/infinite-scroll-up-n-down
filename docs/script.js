@@ -8,7 +8,16 @@ $(function(){
 	$('#page').infiniteScrollUND({
 		upNav: '.previous a',
 		downNav: '.next a',
-		container: '#page'
+		container: '#page',
+		top: 80,
+		acrossPage: function($page){
+			$('.navbar-nav li').removeClass('active');
+			$('.navbar-nav a').each(function(){
+				if(this.innerHTML == $page.find('h2').html()){
+					$(this).parent().addClass('active');
+				}
+			});
+		}
 	});
 });
 

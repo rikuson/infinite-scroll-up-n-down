@@ -13,6 +13,8 @@
 			container: this.selector,
 			timeout: 1000,
 			maxRequest: 3,
+			history: true,
+			acrossPage: function($page, url){},
 			top: 0,
 			append: function(children){},
 			prepend: function(children){}
@@ -162,8 +164,10 @@
 		// If I use while, it doesn't wait ajax
 		$(window).scrollTop(0);
 		setPageBorders();
-		fillTheTop();
+		// If `fillTheTop` is above `fillTheBtm`, scrollTop position is different
+		// It should be like below.
 		fillTheBtm();
+		fillTheTop();
 
 		var nextPosFromTop = prevPosFromTop = distance('top');
 		var nextPosFromBtm = prevPosFromBtm = distance('bottom');
@@ -177,6 +181,22 @@
 			}
 			if (prevPosFromBtm > option.threshold && nextPosFromBtm <= option.threshold) {
 				fillTheBtm();
+			}
+
+			for (var i = 0; i < pageBorders.length; i++) {
+				var pageBorder = pageBorders[i];
+				// Scrolling Down
+				if (pageBorder.offsetTop - option.top > prevPosFromTop && pageBorder.offsetTop - option.top <= nextPosFromTop) {
+					if (option.history) history.pushState(null, $(option.headline).text(), pageBorder.below);
+					option.acrossPage(pages[i + 1].contents, pageBorder.below);
+					break;
+				}
+				// Scrolling Up
+				if (pageBorder.offsetTop - option.top < prevPosFromTop && pageBorder.offsetTop - option.top >= nextPosFromTop) {
+					if (option.history) history.pushState(null, $(option.headline).text(), pageBorder.above);
+					option.acrossPage(pages[i].contents, pageBorder.above);
+					break;
+				}
 			}
 
 			prevPosFromTop = nextPosFromTop;

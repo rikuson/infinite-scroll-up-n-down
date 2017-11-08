@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Infinite Scroll Up 'N Down</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
+		<script type="text/javascript" src="./bundle.js"></script>
 	</head>
 	<body>
 		<div class="jumbotron">
 			<div class="container text-center">
-				<span class="label label-default">GitHub Star</span>
-				<span class="label-group">
-					<span class="label label-success">npm</span><span class="label label-default">&gt;= 2.0</span>
+				<span id="github-stars">
+					<a class="github-button" href="https://github.com/rikuson/infinite-scroll-up-n-down" data-show-count="true" aria-label="Star rikuson/infinite-scroll-up-n-down on GitHub">Star</a>
 				</span>
 				<span class="label-group">
 					<span class="label label-success">LISCENCE</span><span class="label label-default">MIT</span>
@@ -29,35 +32,20 @@
 			</div>
 			<h3><span class="glyphicon glyphicon-sort"></span> Try scroll up and down!</h3>
 			<div class="row">
-				<div class="col-sm-6">
-					<iframe id="frame" height="300" src="./page-1.html"></iframe>
+				<div class="col-sm-6 hidden-xs">
+					<div id="frame"><iframe src="./page-1.html"></iframe></div>
 				</div>
 				<div class="col-sm-6">
-					<p>I connected page 5 to page 1 and made it repeat to be clear.<br>Off course, you can make it stop scrolling at page 5.</p>
+					<p>I connected page 5 to page 1 and made it repeat to be clear.<br>Of course, you can make it stop scrolling at page 5.</p>
 					<a target="_blank" class="btn btn-primary btn-lg" href="./page-1.html">
 						<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Open in new tab
 					</a>
 				</div>
 			</div>
 			<div class="page-header">
-				<h2>Installation</h2>
-			</div>
-			<h3>Basic</h3>
-			<p>Run the command below.</p>
-			<pre>$ git clone https://github.com/rikuson/infinite-scroll-up-n-down</pre>
-			<p>Load it into your HTML file with jQuery.</p>
-			<span class="label label-default label-pre">example.html</span>
-			<pre>...
-&lt;script type="text/javascript" src="./jquery.min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./infinite-scroll-up-n-down.min.js"&gt;&lt;/script&gt;
-...</pre>
-			<h3>NPM</h3>
-			<p>If you are using npm, run the command below.</p>
-			<pre>$ npm install --save infinite-scroll-up-n-down</pre>
-
-			<div class="page-header">
 				<h2>Usage</h2>
 			</div>
+			<p>This plugin is good for web application like online book that use infinite scroll.<br>You need to provide not only next page but also previous page in advance.<br>Let's say you access to page 2.<br>Then it should provide page 1 and page 3 in advance.</p>
 			<pre>/
 ├ page-1.html
 ├ page-2.html *
@@ -91,6 +79,21 @@
   downNav: '.nav-next',
   upNav: '.nav-prev'
 });</pre>
+			<div class="page-header">
+				<h2>Installation</h2>
+			</div>
+			<h3>Basic</h3>
+			<p>Run the command below.</p>
+			<pre>$ git clone https://github.com/rikuson/infinite-scroll-up-n-down</pre>
+			<p>Load it into your HTML file with jQuery.</p>
+			<span class="label label-default label-pre">example.html</span>
+			<pre>...
+&lt;script type="text/javascript" src="./jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./infinite-scroll-up-n-down.min.js"&gt;&lt;/script&gt;
+...</pre>
+			<h3>NPM</h3>
+			<p>If you are using npm, run the command below.</p>
+			<pre>$ npm install --save infinite-scroll-up-n-down</pre>
 			<div class="page-header">
 				<h2>Options</h2>
 			</div>
@@ -161,7 +164,7 @@
 			<div class="page-header">
 				<h2>Follow me</h2>
 			</div>
-			<h3>日本語</h3>
+			<h3>日本語(Japanese)</h3>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">SNS</h4>
@@ -200,6 +203,5 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="./bundle.js"></script>
 	</body>
 </html>

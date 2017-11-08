@@ -109,9 +109,22 @@ iframe {
 }
 
 #frame {
+	height: 300px;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 	border: 10px solid #333;
-	padding: 5px;
+}
+
+#frame iframe {
+	height: 100%;
 	box-shadow: 0 0 5px rgba(0,0,0,.5) inset;
+	border: none;
+	padding: 5px;
+	display: block;
+}
+
+#github-stars iframe {
+	vertical-align: middle;
 }
 
 /* app-sm */
